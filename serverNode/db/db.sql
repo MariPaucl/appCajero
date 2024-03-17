@@ -1,0 +1,22 @@
+CREATE DATABASE appcajeros;
+
+USE appcajeros;
+
+CREATE TABLE cajeros (
+    idCajero INT PRIMARY KEY AUTO_INCREMENT,
+    numId VARCHAR(20) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    correo VARCHAR(100) NOT NULL,
+    passCajero VARCHAR(120) NOT NULL
+);
+
+CREATE TABLE ventas (
+    idVenta INT PRIMARY KEY AUTO_INCREMENT,
+    idCajero INT NOT NULL,
+    nomCliente VARCHAR(50) NOT NULL,
+    valor DOUBLE NOT NULL,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+ALTER TABLE ventas ADD FOREIGN KEY (idCajero) REFERENCES cajeros(idCajero);
