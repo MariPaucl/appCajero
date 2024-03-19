@@ -58,6 +58,19 @@ const HomeStyles = StyleSheet.create({
         marginTop: 10,
         fontWeight: 'bold',
     },
+    link: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 30,
+    },
+    linkText: {
+        fontStyle: 'italic',
+        color: '#D32F2F',
+        borderBottomWidth: 1,
+        borderBottomColor: '#D32F2F',
+        fontWeight: 'bold',
+        marginLeft: 10,
+    },
 })
 
 export default HomeStyles;

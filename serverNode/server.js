@@ -6,6 +6,7 @@ const logger = require('morgan');
 const cors = require('cors');
 const cajeroRoutes = require('./routes/cajeroRoutes');
 const ventaRoutes = require('./routes/ventaRoutes');
+const infoRoutes = require('./routes/infoRoutes');
 
 const port = process.env.PORT || 3000;
 app.use(logger('dev'));
@@ -18,6 +19,7 @@ app.set('port', port);
 
 cajeroRoutes(app);
 ventaRoutes(app);
+infoRoutes(app);
 
 //ipconfig para saber dir: ip
 server.listen(3000, '192.168.0.15' || 'localhost', function() {

@@ -12,8 +12,14 @@ export const InformScreen = () => {
             <Text style={styles.title}>GENERAR INFORME DIARIO</Text>
             <View style={styles.inputDate}>
                 <TextInput style={styles.formTextInput}
-                placeholder='Ingrese el dia'
-                keyboardType='default'
+                placeholder='Ingrese el Dia'
+                keyboardType='numeric'
+                />
+            </View>
+            <View style={styles.inputDate}>
+                <TextInput style={styles.formTextInput}
+                placeholder='Ingrese el Mes'
+                keyboardType='numeric'
                 />
             </View>
             <View style={{marginTop: 20}}>
@@ -23,7 +29,7 @@ export const InformScreen = () => {
             <View style={styles.informe}>
                 <Text style={styles.informeText}>RESULTADOS:</Text>
                 <ScrollView>
-                    <Text>Cliente: Martha Suarez, Valor: 50000, Fecha: 25/11/05, Cajero: Juan Mendez</Text>
+                    <Text>Cajero: Paula Lopez, Venta: 1, Cliente: 'Carla Mendoza', Valor: 50000, Fecha: '17-03-2024 15:50:35'</Text>
                 </ScrollView>
             </View>
             </View>

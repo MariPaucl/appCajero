@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid, TouchableOpacity } from 'react-native';
+import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { RoundedButton } from '../../components/RoundedButton';
 import { StackNavigationProp} from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
@@ -29,6 +29,7 @@ export const HomeScreen = () => {
             <View style={styles.form}>
             <Text style={styles.formText}>REGISTRATE</Text>
             <TouchableOpacity onPress={() => navigation.navigate('VentasScreen')}><Text>Ventas</Text></TouchableOpacity>
+            <ScrollView>
             <CustomTextInput
                 image={require('../../../../assets/ID.png')}
                 placeholder='No. Identificacion'
@@ -74,7 +75,11 @@ export const HomeScreen = () => {
             <View style={{marginTop: 30}}>
                 <RoundedButton text='CONTINUAR' onPress={() => register()}/>
             </View>
-
+            <View style={styles.link}>
+            <Text>Ya tienes una cuenta?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('VentasScreen')}><Text style={styles.linkText}>Inicia Sesion</Text></TouchableOpacity>
+            </View>
+            </ScrollView>
             </View>
         </View>
         );

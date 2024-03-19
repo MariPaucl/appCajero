@@ -27,6 +27,7 @@ const InformStyles = StyleSheet.create({
     inputDate: {
         flexDirection: 'row',
         margin: 30,
+        marginBottom: -20,
     },
     formTextInput:{
         backgroundColor: '#FFFFFF',

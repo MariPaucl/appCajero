@@ -4,10 +4,10 @@ USE appcajeros;
 
 CREATE TABLE cajeros (
     idCajero INT PRIMARY KEY AUTO_INCREMENT,
-    numId VARCHAR(20) NOT NULL,
+    numId VARCHAR(20) UNIQUE NOT NULL,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
-    correo VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) UNIQUE NOT NULL,
     passCajero VARCHAR(120) NOT NULL
 );
 
