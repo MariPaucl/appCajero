@@ -8,8 +8,8 @@ import useViewModel from './ViewModel';
 import { CustomTextInput } from '../../components/CustomTextInputs';
 import styles from './Styles';
 
-export const HomeScreen = () => {
-    const {numId, nombre, apellido, correo, passCajero, onChange, register} = useViewModel();
+export const LoginScreen = () => {
+    const {correo, passCajero, onChange, login} = useViewModel();
     const navigation =
     useNavigation<StackNavigationProp<RootStackParamList>>();
 
@@ -27,32 +27,8 @@ export const HomeScreen = () => {
             <Text style={styles.logoText}>BIENVENIDO CAJERO!</Text>
             </View>
             <View style={styles.form}>
-            <Text style={styles.formText}>REGISTRATE</Text>
+            <Text style={styles.formText}>INICIA SESION</Text>
             <ScrollView>
-            <CustomTextInput
-                image={require('../../../../assets/ID.png')}
-                placeholder='No. Identificacion'
-                keyboardType='numeric'
-                property='numId'
-                onChangeText={onChange}
-                value={numId}
-            />
-            <CustomTextInput
-                image={require('../../../../assets/user.png')}
-                placeholder='Nombres'
-                keyboardType='default'
-                property='nombre'
-                onChangeText={onChange}
-                value={nombre}
-            />
-            <CustomTextInput
-                image={require('../../../../assets/user.png')}
-                placeholder='Apellidos'
-                keyboardType='default'
-                property='apellido'
-                onChangeText={onChange}
-                value={apellido}
-            />
             <CustomTextInput
                 image={require('../../../../assets/email.png')}
                 placeholder='Correo electronico'
@@ -72,11 +48,10 @@ export const HomeScreen = () => {
             />
 
             <View style={{marginTop: 30}}>
-                <RoundedButton text='CONTINUAR' onPress={() => register()}/>
+                <RoundedButton text='CONTINUAR' onPress={() => login()}/>
             </View>
             <View style={styles.link}>
-            <Text>Ya tienes una cuenta?</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}><Text style={styles.linkText}>Inicia Sesion</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('VentasScreen')}><Text style={styles.linkText}>Ventas</Text></TouchableOpacity>
             </View>
             </ScrollView>
             </View>

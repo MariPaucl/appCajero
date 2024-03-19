@@ -1,6 +1,8 @@
 const mysql = require('../config/config');
+const bcrypt = require('bcryptjs');
 const Cajero = {};
-Cajero.create = (cajero, result) => {
+Cajero.create = async (cajero, result) => {
+    const hash = await bcrypt.hash(cajero.passCajero, 10);
     const sql = `
         INSERT INTO cajeros(
             numId,
@@ -19,7 +21,7 @@ Cajero.create = (cajero, result) => {
                 cajero.nombre,
                 cajero.apellido,
                 cajero.correo,
-                cajero.passCajero
+                hash
             ],
             (err, res) => {
                 if (err) {
