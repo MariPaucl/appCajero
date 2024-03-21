@@ -11,7 +11,7 @@ export class AuthRepositoryImpl implements AuthRepository {
             });
         } catch (error) {
             let e = (error as Error).message;
-            console.log('Error' + e);
+            console.log('Error: ' + e);
             return Promise.resolve({ success: false, error: e, result: undefined });
         }
     }

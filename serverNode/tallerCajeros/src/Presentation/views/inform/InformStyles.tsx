@@ -52,6 +52,29 @@ const InformStyles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 30,
     },
+    head: {
+        height: 40,
+        backgroundColor: '#f1f8ff',
+        textAlign: 'center',
+    },
+    text: {
+        margin: 6,
+        textAlign: 'justify',
+    },
+    tableContainer: {
+        flex: 1,
+        padding: 16,
+        paddingTop: 30,
+        backgroundColor: '#fff',
+    },
+    total: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 25,
+    },
+    totalText: {
+        fontWeight: 'bold',
+    }
 })
 
 export default InformStyles;
