@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2024 a las 23:20:24
+-- Tiempo de generación: 22-03-2024 a las 22:50:13
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,8 +41,8 @@ CREATE TABLE `cajeros` (
 --
 
 INSERT INTO `cajeros` (`idCajero`, `numId`, `nombre`, `apellido`, `correo`, `passCajero`) VALUES
-(1, '1021313246', 'Paula', 'Lopez', 'pau.lop25@gmail.com', '$2a$10$cSDlAg7Fv85EaIM77DGdJed/FJtIdY/U6b./APXj3vd8E/8E3CDLm'),
-(2, '1243235610', 'Carlos', 'Ruiz', 'carlos.r10@gmail.com', '$2a$10$CmfNUjgyAz6DkX/noD7HfuM/Ef/FteJkQMpwGwTar9L8RqSEqRLwC');
+(1, '1243568721', 'Carlos', 'Ruiz', 'carlos12@gmail.com', '$2a$10$ZsNpG9h2lKALZliATUWhFeAi2KWFOODOfuD1iq1HTeX9wJYwDNmNa'),
+(2, '1021313246', 'Paula', 'Carreño', 'paulacl@gmail.com', '$2a$10$q7IedwV7On.I2oNqRimAeeX.ILW4uPUMzZurU3Ou18YByKscVudNi');
 
 -- --------------------------------------------------------
 
@@ -63,9 +63,9 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`idVenta`, `idCajero`, `nomCliente`, `valor`, `fecha`) VALUES
-(1, 1, 'Carolina Cruz', 50000, '2024-03-21 15:54:45'),
-(2, 1, 'Mario Gutierrez', 300000, '2024-03-21 15:55:11'),
-(3, 1, 'Luisa Moreno', 100000, '2024-03-21 15:55:32');
+(1, 1, 'Carolina Cruz', 50000, '2024-03-22 16:23:53'),
+(2, 1, 'Miguel Cortez', 100000, '2024-03-22 16:28:35'),
+(3, 2, 'Marta Rojas', 25000, '2024-03-22 16:29:05');
 
 --
 -- Índices para tablas volcadas
