@@ -1,16 +1,15 @@
-import React, {useState} from 'react';
-import { View, Image, Text, Button, TextInput, KeyboardType, Alert, ScrollView } from 'react-native';
-import {Table, Row, Rows} from 'react-native-table-component';
+import React, { useState } from 'react';
+import { View, Image, Text, Button, TextInput, Alert, ScrollView } from 'react-native';
 import styles from './InformStyles';
 
 export const InformScreen = () => {
-    // Datos de ejemplo para la tabla
     const [tableData, setTableData] = useState([]);
     const [totalSales, setTotalSales] = useState(0);
     const [fechaDia, setFechaDia] = useState('');
     const [fechaMes, setFechaMes] = useState('');
+    const [idCajero, setIdCajero] = useState('');
 
-    const handleGenerateReport = async (idCajero: number) => {
+    const handleGenerateReport = async () => {
         try {
             const response = await fetch('http://192.168.0.15:3000/api/info/show', {
                 method: 'POST',
@@ -23,14 +22,9 @@ export const InformScreen = () => {
             console.log('Data: ', data);
 
             if (response.ok) {
-                const { ventas } = data;
+                const { ventas, totalVentas } = data;
                 setTableData(ventas);
-                // Calcular la suma total de los valores de ventas
-                let sum = 0;
-                for (let venta of ventas) {
-                    sum += Number(venta[3]); // Suponiendo que el valor de la venta está en la cuarta posición del arreglo
-                }
-                setTotalSales(sum);
+                setTotalSales(totalVentas);
             } else {
                 Alert.alert('Error', 'Error al generar el informe');
             }
@@ -41,7 +35,7 @@ export const InformScreen = () => {
     };
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <Image
                 source={require('../../../../assets/cajero.jpg')}
                 style={styles.imageBackground}
@@ -64,18 +58,27 @@ export const InformScreen = () => {
                         onChangeText={setFechaMes}
                     />
                 </View>
-                <View style={{marginTop: 20}}>
-                    <Button title='GENERAR' color='#D32F2F' onPress={() => handleGenerateReport(1)}/>
+                <View style={styles.inputDate}>
+                    <TextInput
+                        style={styles.formTextInput}
+                        placeholder='Ingrese el ID del Cajero'
+                        keyboardType='numeric'
+                        onChangeText={setIdCajero}
+                    />
+                </View>
+                <View style={{ marginTop: 20 }}>
+                    <Button title='GENERAR' color='#D32F2F' onPress={handleGenerateReport} />
                 </View>
             </View>
             <View style={styles.informe}>
                 <Text style={styles.informeText}>RESULTADOS:</Text>
                 <ScrollView>
-                    <View style={styles.tableContainer}>
-                        <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
-                            <Row data={['Cajero', 'Venta', 'Cliente', 'Valor', 'Fecha']} style={styles.head} textStyle={styles.text} />
-                            <Rows data={tableData} textStyle={styles.text} />
-                        </Table>
+                    <View style={styles.ventasContainer}>
+                        {tableData.map((venta, index) => (
+                            <View key={index}>
+                                <Text>Cajero: {venta.nombre} {venta.apellido} - Venta: {venta.idVenta} - Cliente: {venta.nomCliente} - Valor: {venta.valor} - Fecha: {venta.fechaVenta}</Text>
+                            </View>
+                        ))}
                     </View>
                     <View style={styles.total}>
                         <Text style={styles.totalText}>TOTAL VENTAS: </Text>
@@ -83,6 +86,8 @@ export const InformScreen = () => {
                     </View>
                 </ScrollView>
             </View>
-        </View>
+        </ScrollView>
     );
 }
+
+export default InformScreen;

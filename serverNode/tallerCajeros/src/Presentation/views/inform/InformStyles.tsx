@@ -40,7 +40,7 @@ const InformStyles = StyleSheet.create({
     },
     informe: {
         width: '100%',
-        height: '60%',
+        height: '50%',
         backgroundColor: 'white',
         position: 'absolute',
         bottom: 0,
@@ -61,7 +61,7 @@ const InformStyles = StyleSheet.create({
         margin: 6,
         textAlign: 'justify',
     },
-    tableContainer: {
+    ventasContainer: {
         flex: 1,
         padding: 16,
         paddingTop: 30,

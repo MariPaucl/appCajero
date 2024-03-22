@@ -20,3 +20,6 @@ CREATE TABLE ventas (
 );
 
 ALTER TABLE ventas ADD FOREIGN KEY (idCajero) REFERENCES cajeros(idCajero);
+
+SELECT * FROM cajeros;
+SELECT * FROM ventas;

@@ -23,7 +23,7 @@ infoRoutes(app);
 
 //ipconfig para saber dir: ip
 server.listen(3000, '192.168.0.15' || 'localhost', function() {
-    console.log('Aplicacion de Node JS ' + process.pid + ' inicio en el puerto ' + port);
+    console.log('Aplicacion Cajeros ' + process.pid + ' inicio en el puerto ' + port);
 });
 
 app.get('/', (req, res) => {

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigation } from '@react-navigation/native';
-import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, Image, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { RoundedButton } from '../../components/RoundedButton';
 import { StackNavigationProp} from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
@@ -9,7 +9,17 @@ import { CustomTextInput } from '../../components/CustomTextInputs';
 import styles from './Styles';
 
 export const HomeScreen = () => {
-    const {numId, nombre, apellido, correo, passCajero, onChange, register} = useViewModel();
+    const { numId, nombre, apellido, correo, passCajero, onChange, register } = useViewModel();
+
+    const handleRegister = async () => {
+        try {
+            await register();
+            Alert.alert('Registro Exitoso', 'Cajero registrado exitosamente.');
+        } catch (error) {
+            Alert.alert('Error', 'Hubo un error al registrar el cajero. Por favor, inténtalo de nuevo.');
+            console.error('Error al registrar el cajero:', error);
+        }
+    };
     const navigation =
     useNavigation<StackNavigationProp<RootStackParamList>>();
 
@@ -72,11 +82,11 @@ export const HomeScreen = () => {
             />
 
             <View style={{marginTop: 30}}>
-                <RoundedButton text='CONTINUAR' onPress={() => register()}/>
+                <RoundedButton text='CONTINUAR' onPress={handleRegister}/>
             </View>
             <View style={styles.link}>
-            <Text>Ya tienes una cuenta?</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}><Text style={styles.linkText}>Inicia Sesion</Text></TouchableOpacity>
+            <Text>Registrar Ventas</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('VentasScreen')}><Text style={styles.linkText}>Ventas</Text></TouchableOpacity>
             </View>
             </ScrollView>
             </View>

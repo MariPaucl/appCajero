@@ -1,15 +1,25 @@
 import React, {useState} from 'react'
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, StyleSheet, Image, TextInput, ToastAndroid, Touchable, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, Alert,TouchableOpacity, ScrollView } from 'react-native';
 import { RoundedButton } from '../../components/RoundedButton';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
-import useViewModel from './VentasViewModel';
+import useViewModel from './viewModel';
 import { CustomTextInput } from '../../components/CustomTextInputs';
-import styles from './VentasStyles';
+import styles from './Styles';
 
 export const VentasScreen = () => {
-    const {idCajero, nomCliente, valor, onChange, register} = useViewModel();
+    const { idCajero, nomCliente, valor, onChange, register } = useViewModel();
+
+    const handleRegister = async () => {
+        try {
+            await register();
+            Alert.alert('Registro Exitoso', 'Venta registrada exitosamente.');
+        } catch (error) {
+            Alert.alert('Error', 'Hubo un error al registrar la venta. Por favor, inténtalo de nuevo.');
+            console.error('Error al registrar la venta:', error);
+        }
+    };
     const navigation =
     useNavigation<StackNavigationProp<RootStackParamList>>();
 
@@ -55,7 +65,7 @@ export const VentasScreen = () => {
             />
 
             <View style={{marginTop: 30}}>
-                <RoundedButton text='GUARDAR' onPress={() => register()}/>
+                <RoundedButton text='GUARDAR' onPress={handleRegister}/>
             </View>
                 <View style={styles.linkInform}>
                     <Text>¿Quieres ver tu informe?</Text>
